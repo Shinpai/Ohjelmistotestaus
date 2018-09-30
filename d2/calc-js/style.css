@@ -1,0 +1,32 @@
+/*     Written by Antti-Juhani Kaijanaho in 2018
+
+       Licensed under the Apache License, Version 2.0 (the "License");
+       you may not use this file except in compliance with the License.
+       You may obtain a copy of the License at
+
+           http://www.apache.org/licenses/LICENSE-2.0
+
+       Unless required by applicable law or agreed to in writing,
+       software distributed under the License is distributed on an "AS
+       IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either
+       express or implied.  See the License for the specific language
+       governing permissions and limitations under the License.
+*/
+#calc {
+    width: 20%;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    list-style: none;
+}
+
+#calc li { border: thin solid; padding: 3px; text-align: center; }
+
+#display { grid-column: 1/5; height: 2em; }
+
+#clear { grid-column: 1/2; }
+#bs    { grid-column: 2/3; }
+#div   { grid-column: 3/4; grid-row: 2; }
+#mul   { grid-column: 4/5; grid-row: 2; }
+#sub   { grid-column: 4/5; grid-row: 3; }
+#add   { grid-column: 4/5; grid-row: 4; }
+#eval  { grid-column: 4/5; grid-row: 5/7; }

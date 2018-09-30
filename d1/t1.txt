@@ -1,0 +1,35 @@
+Tekijät: Harri Juutilainen ja Mari Kasanen
+
+Toiminnallinen ositus:
+1. + ja - laskut
+2. * ja / laskut, saa sisältää myös +,-
+3. sulut, saa sisältää myös +,-,*,/
+4. nollalla jako
+5. väärä syöte, esim. )( tai muuttuja --> poikkeus
+    * nämä samassa kategoriassa koska ei ole merkitystä ohjelman toiminnallisuuden kannalta,
+    joka tapauksessa poikkeus.
+
+Ekvivalenssiluokilla 1-3 on matematiikkaan perustuva järjestys. Ensimmäiseen luokkaan
+kuuluvat mielivaltaisen pituiset kelvolliset syötteet, jotka sisältävät vain yhteen-
+ja/tai vähennyslaskuja. Toinen luokka sisältää syötteet, joissa on kerto- ja/tai 
+jakolaskuja, ja mahdollisesti yhteen-/vähennyslaskuja. Kolmas luokka sisältää kaikkien
+peruslaskutoimitusten lisäksi myös sulut/sulkuja.
+
+Erillisyys: Luokka 5 on muista triviaalisti erillinen. Luokka 4:n erillisyys seuraa
+erityisliukulukujen luonteesta: muilla laskutoimituksilla ei ole merkitystä, kun
+vastaukseksi annetaan NaN tai ääretön. Vaikka syötteen, joka kuuluu luokkaan 2, osana 
+olisi + tai - lasku, syöte tulkitaan joka tapauksessa luokkaan 2. Samoin luokan 3 tapauksessa.
+
+Kattavuus: Ositus kattaa hierarkkisesti kaikki halutut laskutoimitukset, sekä 
+erikoistilanteen (nollalla jako) ja väärät syötteet. Väärien syötteiden kirjo on laaja,
+ja halutessaan luokan 5 voisi pilkkoa pienemmiksikin osiksi.
+
+Esimerkkisyötteet:
+Luokka 1: 59-19+1 --> palautetaan 41
+Luokka 2: 4+10*3/2 --> palautetaan 19
+Luokka 3: (72/9+2)*3 --> palautetaan 30
+Luokka 4: (2*10/4)/(1-1) --> palautetaan NaN/ääretön
+Luokka 5: asdfghjklö --> heitetään poikkeus
+
+Tehtävässä hankalinta oli perusteluiden verbalisointi ja omien ajatusten oikeellisuuden
+arviointi. Tehtävää tehdessä konretisoitui luennolla esitelty toiminnallinen ositustapa.
