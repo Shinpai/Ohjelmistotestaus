@@ -1,8 +1,8 @@
 from selenium import webdriver
-from selenium.webdriver.chrome.options import Options
 import unittest
 import sys
 import inspect
+import time
 
 # Määritellään driver
 driver = webdriver.Chrome(sys.argv[1])
@@ -69,12 +69,16 @@ def testi_sulut():
 
 
 def main():
-    print("-- Testit --")
+    print('Starting tests ...')
+    print("="*30)
+    start_time = time.perf_counter()
     testi_plus(), clear.click()
     testi_minus(), clear.click()
     testi_kerto(), clear.click()
     testi_jako(), clear.click()
     testi_sulut(), clear.click()
+    print("="*30)
+    print('Tests complete in %s seconds' % (time.perf_counter() - start_time))
     driver.close()
 
 if __name__ == "__main__":
