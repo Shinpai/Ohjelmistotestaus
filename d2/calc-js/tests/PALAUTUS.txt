@@ -1,0 +1,11 @@
+Tein calc-js version unittest esimerkkiluokan päälle omat testitapaukset.
+Toimii samasta tiedostosta kuin esimerkki: selenium_tests.py. 
+
+En suoraan sanottuna oppinut hirveästi mitään tämän tekemisestä. Tuntui, että
+tein vaan helpot tapaukset joiden testaamisesta ei tällaisessa ohjelmassa ole hyötyä.
+Jatkaminen tai vaikeampien tapauksien tekeminen olisi vienyt lähinnä enemmän
+aikaa kuin että olisin oppinut oikeasti mitään. Vaikea uskoa ettei kukaan olisi aikaisemmin
+mitään tämäntapaista tehnyt tähän mennessä opiskelua.
+
+Hankaluuksia oli perinteisesti pythonilla tehdessä PATH:n kanssa, sekä siinä kun chromedriver
+meinasi jäädä jumiin muutamilla asetuksilla.
