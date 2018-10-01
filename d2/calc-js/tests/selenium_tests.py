@@ -91,5 +91,12 @@ class SeleniumTests(unittest.TestCase):
         self.sub.click(), self.b_1.click(), self.b_eval.click()
         self.assertEqual(self.disp.text, "0")
 
+    def test_nollajako(self):
+        # 1 / (2 - 2)
+        self.b_1.click(), self.div.click()
+        self.keyOP.click(), self.b_2.click(), self.sub.click()
+        self.b_2.click(), self.keyCP.click(), self.b_eval.click()
+        self.assertEqual(self.disp.text, "Infinity")
+
 if __name__ == '__main__':
     unittest.main(argv=[sys.argv[0]] + sys.argv[2:])
