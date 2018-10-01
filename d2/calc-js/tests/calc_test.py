@@ -4,9 +4,13 @@ import sys
 import inspect
 import time
 
+# DEPRECATED 01.10.2018
+# Käytä /selenium_tests.py joka käyttää unittestiä
+# @ haeejuut
+
 # Määritellään driver
 driver = webdriver.Chrome(sys.argv[1])
-driver.get('http://localhost:8000/calc-js')
+driver.get('http://127.0.0.1:8000/')
 
 # Käytettävät elementit muuttujiin
 result = driver.find_element_by_id('display')
