@@ -53,6 +53,7 @@ class SeleniumTests(unittest.TestCase):
         self.driver.quit()
 
     def test_plus(self):
+        # Osituksen 1. luokka, tapaus 1 (yhteenlasku)
         # 1 + 1 = 2
         self.assertEqual(self.disp.text, "")
         self.b_1.click(), self.add.click(), self.b_1.click()
@@ -61,6 +62,7 @@ class SeleniumTests(unittest.TestCase):
         self.assertEqual(self.disp.text, "2")
 
     def test_minus(self):
+        # Osituksen 1. luokka, tapaus 2 (vähennyslasku)
         # 2 - 1 = 1
         self.assertEqual(self.disp.text, "")
         self.b_2.click(), self.sub.click(), self.b_1.click()
@@ -69,6 +71,7 @@ class SeleniumTests(unittest.TestCase):
         self.assertEqual(self.disp.text, '1')
 
     def test_kerto(self):
+        # Osituksen 2. luokka, tapaus 1 (kertolasku)
         # 2 * 1 = 2
         self.assertEqual(self.disp.text, "")
         self.b_2.click(), self.mul.click(), self.b_1.click()
@@ -77,6 +80,7 @@ class SeleniumTests(unittest.TestCase):
         self.assertEqual(self.disp.text, "2")
 
     def test_jako(self):
+        # Osituksen 2. luokka, tapaus 2 (jakolasku)
         # 2 / 2 = 1
         self.b_2.click(), self.div.click(), self.b_2.click()
         self.assertEqual(self.disp.text, "2/2")
@@ -84,6 +88,7 @@ class SeleniumTests(unittest.TestCase):
         self.assertEqual(self.disp.text, "1")
 
     def test_sulut(self):
+        # Osituksen 3. luokka, (sulut)
         # (2 / 2) - 1 = 0
         self.keyOP.click(), self.b_2.click(), self.div.click()
         self.b_2.click(), self.keyCP.click()
@@ -92,11 +97,24 @@ class SeleniumTests(unittest.TestCase):
         self.assertEqual(self.disp.text, "0")
 
     def test_nollajako(self):
+        # Osituksen 4. luokka, (nollalla jako)
         # 1 / (2 - 2)
         self.b_1.click(), self.div.click()
         self.keyOP.click(), self.b_2.click(), self.sub.click()
         self.b_2.click(), self.keyCP.click(), self.b_eval.click()
         self.assertEqual(self.disp.text, "Infinity")
+    
+    def test_syote(self):
+        # Osituksen 5. luokka, (väärä syöte)
+        # )(21-+(1
+        self.keyCP.click(), self.keyOP.click(), self.b_2.click(),
+        self.assertEqual(self.disp.text, ")(2")
+        self.sub.click(), self.add.click(), self.keyOP.click(),
+        self.assertEqual(self.disp.text, ")(2-+(")
+        # Tässä testissä tärkein huomio ettei eval-näppäimen
+        # painaminen tee mitään jos syöte on väärä
+        self.b_1.click(), self.b_eval.click()
+        self.assertEqual(self.disp.text, ")(2-+(1")
 
 if __name__ == '__main__':
     unittest.main(argv=[sys.argv[0]] + sys.argv[2:])
