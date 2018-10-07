@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <diagram program="umlet" version="14.3.0">
-  <zoom_level>11</zoom_level>
+  <zoom_level>8</zoom_level>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>704</x>
-      <y>99</y>
-      <w>242</w>
-      <h>88</h>
+      <x>760</x>
+      <y>72</y>
+      <w>176</w>
+      <h>64</h>
     </coordinates>
     <panel_attributes>halign=left
 private final char[] input;
@@ -19,10 +19,10 @@ private int inx = 0;
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>803</x>
+      <x>832</x>
       <y>0</y>
-      <w>33</w>
-      <h>121</h>
+      <w>24</w>
+      <h>88</h>
     </coordinates>
     <panel_attributes>lt=&lt;&lt;-</panel_attributes>
     <additional_attributes>10.0;90.0;10.0;10.0</additional_attributes>
@@ -30,10 +30,10 @@ private int inx = 0;
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>704</x>
-      <y>242</y>
-      <w>242</w>
-      <h>44</h>
+      <x>760</x>
+      <y>176</y>
+      <w>176</w>
+      <h>32</h>
     </coordinates>
     <panel_attributes>halign=left
 private void skipWhitespace()</panel_attributes>
@@ -42,10 +42,10 @@ private void skipWhitespace()</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>803</x>
-      <y>176</y>
-      <w>33</w>
-      <h>88</h>
+      <x>832</x>
+      <y>128</y>
+      <w>24</w>
+      <h>64</h>
     </coordinates>
     <panel_attributes>lt=&lt;&lt;-</panel_attributes>
     <additional_attributes>10.0;60.0;10.0;10.0</additional_attributes>
@@ -53,10 +53,10 @@ private void skipWhitespace()</panel_attributes>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>704</x>
-      <y>341</y>
-      <w>242</w>
-      <h>44</h>
+      <x>760</x>
+      <y>248</y>
+      <w>176</w>
+      <h>32</h>
     </coordinates>
     <panel_attributes>halign=left
 while</panel_attributes>
@@ -65,10 +65,10 @@ while</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>803</x>
-      <y>275</y>
-      <w>33</w>
-      <h>88</h>
+      <x>832</x>
+      <y>200</y>
+      <w>24</w>
+      <h>64</h>
     </coordinates>
     <panel_attributes>lt=&lt;&lt;-</panel_attributes>
     <additional_attributes>10.0;60.0;10.0;10.0</additional_attributes>
@@ -76,10 +76,10 @@ while</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>803</x>
-      <y>374</y>
-      <w>55</w>
-      <h>143</h>
+      <x>832</x>
+      <y>272</y>
+      <w>40</w>
+      <h>104</h>
     </coordinates>
     <panel_attributes>lt=&lt;&lt;-
 true</panel_attributes>
@@ -88,10 +88,10 @@ true</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>935</x>
-      <y>341</y>
-      <w>187</w>
-      <h>44</h>
+      <x>928</x>
+      <y>248</y>
+      <w>136</w>
+      <h>32</h>
     </coordinates>
     <panel_attributes>lt=&lt;&lt;-
 false</panel_attributes>
@@ -100,10 +100,10 @@ false</panel_attributes>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>1111</x>
-      <y>352</y>
-      <w>99</w>
-      <h>33</h>
+      <x>1056</x>
+      <y>256</y>
+      <w>72</w>
+      <h>24</h>
     </coordinates>
     <panel_attributes/>
     <additional_attributes/>
@@ -111,10 +111,10 @@ false</panel_attributes>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>1100</x>
-      <y>341</y>
-      <w>121</w>
-      <h>55</h>
+      <x>1048</x>
+      <y>248</y>
+      <w>88</w>
+      <h>40</h>
     </coordinates>
     <panel_attributes/>
     <additional_attributes/>
@@ -122,10 +122,10 @@ false</panel_attributes>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>704</x>
-      <y>495</y>
-      <w>242</w>
-      <h>44</h>
+      <x>760</x>
+      <y>360</y>
+      <w>176</w>
+      <h>32</h>
     </coordinates>
     <panel_attributes>halign=left
 while(inx &lt; input.length)</panel_attributes>
@@ -134,10 +134,10 @@ while(inx &lt; input.length)</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>517</x>
-      <y>495</y>
-      <w>209</w>
-      <h>44</h>
+      <x>624</x>
+      <y>360</y>
+      <w>152</w>
+      <h>32</h>
     </coordinates>
     <panel_attributes>lt=&lt;&lt;-
 true</panel_attributes>
@@ -146,10 +146,10 @@ true</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>803</x>
-      <y>528</y>
-      <w>66</w>
-      <h>143</h>
+      <x>832</x>
+      <y>384</y>
+      <w>48</w>
+      <h>104</h>
     </coordinates>
     <panel_attributes>lt=&lt;&lt;-
 false</panel_attributes>
@@ -158,10 +158,10 @@ false</panel_attributes>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>275</x>
-      <y>495</y>
-      <w>253</w>
-      <h>44</h>
+      <x>448</x>
+      <y>360</y>
+      <w>184</w>
+      <h>32</h>
     </coordinates>
     <panel_attributes>halign=left
 while(isWhitespace(input[inx])))</panel_attributes>
@@ -170,10 +170,10 @@ while(isWhitespace(input[inx])))</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>385</x>
-      <y>528</y>
-      <w>66</w>
-      <h>143</h>
+      <x>528</x>
+      <y>384</y>
+      <w>48</w>
+      <h>104</h>
     </coordinates>
     <panel_attributes>lt=&lt;&lt;-
 false</panel_attributes>
@@ -182,10 +182,10 @@ false</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>297</x>
-      <y>528</y>
-      <w>55</w>
-      <h>198</h>
+      <x>464</x>
+      <y>384</y>
+      <w>40</w>
+      <h>144</h>
     </coordinates>
     <panel_attributes>lt=&lt;&lt;-
 true</panel_attributes>
@@ -194,10 +194,10 @@ true</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>385</x>
-      <y>506</y>
-      <w>715</w>
-      <h>165</h>
+      <x>528</x>
+      <y>368</y>
+      <w>520</w>
+      <h>120</h>
     </coordinates>
     <panel_attributes>lt=&lt;&lt;-
 inx++</panel_attributes>
@@ -206,10 +206,10 @@ inx++</panel_attributes>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>198</x>
-      <y>704</y>
-      <w>242</w>
-      <h>44</h>
+      <x>392</x>
+      <y>512</y>
+      <w>176</w>
+      <h>32</h>
     </coordinates>
     <panel_attributes>halign=left
 if(!(inx + 1 &lt; input.length))</panel_attributes>
@@ -218,10 +218,10 @@ if(!(inx + 1 &lt; input.length))</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>297</x>
-      <y>737</y>
-      <w>66</w>
-      <h>132</h>
+      <x>464</x>
+      <y>536</y>
+      <w>48</w>
+      <h>96</h>
     </coordinates>
     <panel_attributes>lt=&lt;&lt;-
 false</panel_attributes>
@@ -230,10 +230,10 @@ false</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>429</x>
-      <y>704</y>
-      <w>165</w>
-      <h>44</h>
+      <x>560</x>
+      <y>512</y>
+      <w>120</w>
+      <h>32</h>
     </coordinates>
     <panel_attributes>lt=&lt;&lt;-
 true</panel_attributes>
@@ -242,10 +242,10 @@ true</panel_attributes>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>572</x>
-      <y>704</y>
-      <w>242</w>
-      <h>44</h>
+      <x>664</x>
+      <y>512</y>
+      <w>176</w>
+      <h>32</h>
     </coordinates>
     <panel_attributes>halign=left
 if(!(input[inx] == '/'))</panel_attributes>
@@ -254,10 +254,10 @@ if(!(input[inx] == '/'))</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>682</x>
-      <y>737</y>
-      <w>66</w>
-      <h>132</h>
+      <x>744</x>
+      <y>536</y>
+      <w>48</w>
+      <h>96</h>
     </coordinates>
     <panel_attributes>lt=&lt;&lt;-
 false</panel_attributes>
@@ -266,10 +266,10 @@ false</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>803</x>
-      <y>704</y>
-      <w>165</w>
-      <h>44</h>
+      <x>832</x>
+      <y>512</y>
+      <w>120</w>
+      <h>32</h>
     </coordinates>
     <panel_attributes>lt=&lt;&lt;-
 true</panel_attributes>
@@ -278,10 +278,10 @@ true</panel_attributes>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>946</x>
-      <y>704</y>
-      <w>242</w>
-      <h>44</h>
+      <x>936</x>
+      <y>512</y>
+      <w>176</w>
+      <h>32</h>
     </coordinates>
     <panel_attributes>halign=left
 if(!(input[inx+1] == '*'))</panel_attributes>
@@ -290,10 +290,10 @@ if(!(input[inx+1] == '*'))</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>1056</x>
-      <y>737</y>
-      <w>66</w>
-      <h>132</h>
+      <x>1016</x>
+      <y>536</y>
+      <w>48</w>
+      <h>96</h>
     </coordinates>
     <panel_attributes>lt=&lt;&lt;-
 false</panel_attributes>
@@ -302,10 +302,10 @@ false</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>1133</x>
-      <y>385</y>
-      <w>55</w>
-      <h>341</h>
+      <x>1072</x>
+      <y>280</y>
+      <w>40</w>
+      <h>248</h>
     </coordinates>
     <panel_attributes>lt=&lt;&lt;-
 true</panel_attributes>
@@ -314,22 +314,22 @@ true</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>209</x>
-      <y>836</y>
-      <w>880</w>
-      <h>121</h>
+      <x>400</x>
+      <y>608</y>
+      <w>640</w>
+      <h>128</h>
     </coordinates>
     <panel_attributes>lt=&lt;&lt;-
 inx += 2</panel_attributes>
-    <additional_attributes>10.0;90.0;10.0;10.0;780.0;10.0</additional_attributes>
+    <additional_attributes>10.0;140.0;10.0;10.0;780.0;10.0</additional_attributes>
   </element>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>198</x>
-      <y>935</y>
-      <w>242</w>
-      <h>44</h>
+      <x>392</x>
+      <y>720</y>
+      <w>176</w>
+      <h>32</h>
     </coordinates>
     <panel_attributes>halign=left
 while(inx + 1 &lt; input.length)</panel_attributes>
@@ -338,10 +338,10 @@ while(inx + 1 &lt; input.length)</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>429</x>
-      <y>935</y>
-      <w>165</w>
-      <h>44</h>
+      <x>560</x>
+      <y>720</y>
+      <w>120</w>
+      <h>32</h>
     </coordinates>
     <panel_attributes>lt=&lt;&lt;-
 true</panel_attributes>
@@ -350,10 +350,10 @@ true</panel_attributes>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>572</x>
-      <y>935</y>
-      <w>242</w>
-      <h>44</h>
+      <x>664</x>
+      <y>720</y>
+      <w>176</w>
+      <h>32</h>
     </coordinates>
     <panel_attributes>halign=left
 while(input[inx] != '*')</panel_attributes>
@@ -362,25 +362,229 @@ while(input[inx] != '*')</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>297</x>
-      <y>968</y>
-      <w>66</w>
-      <h>132</h>
+      <x>464</x>
+      <y>744</y>
+      <w>48</w>
+      <h>88</h>
     </coordinates>
     <panel_attributes>lt=&lt;&lt;-
 false</panel_attributes>
-    <additional_attributes>10.0;100.0;10.0;10.0</additional_attributes>
+    <additional_attributes>10.0;90.0;10.0;10.0</additional_attributes>
   </element>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>682</x>
-      <y>968</y>
-      <w>66</w>
-      <h>132</h>
+      <x>832</x>
+      <y>720</y>
+      <w>120</w>
+      <h>32</h>
     </coordinates>
     <panel_attributes>lt=&lt;&lt;-
 false</panel_attributes>
-    <additional_attributes>10.0;100.0;10.0;10.0</additional_attributes>
+    <additional_attributes>130.0;20.0;10.0;20.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>936</x>
+      <y>720</y>
+      <w>176</w>
+      <h>32</h>
+    </coordinates>
+    <panel_attributes>halign=left
+while(input[inx+1] != '/')</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>464</x>
+      <y>624</y>
+      <w>576</w>
+      <h>112</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;-
+true</panel_attributes>
+    <additional_attributes>10.0;120.0;10.0;20.0;700.0;20.0;700.0;120.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>736</x>
+      <y>632</y>
+      <w>40</w>
+      <h>104</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;-
+true</panel_attributes>
+    <additional_attributes>10.0;10.0;10.0;110.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>560</x>
+      <y>744</y>
+      <w>480</w>
+      <h>104</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;-
+false</panel_attributes>
+    <additional_attributes>10.0;110.0;580.0;110.0;580.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>392</x>
+      <y>816</y>
+      <w>176</w>
+      <h>32</h>
+    </coordinates>
+    <panel_attributes>halign=left
+if (inx + 1 &lt; input.length)</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>464</x>
+      <y>840</y>
+      <w>48</w>
+      <h>64</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;-
+false</panel_attributes>
+    <additional_attributes>10.0;60.0;10.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>256</x>
+      <y>824</y>
+      <w>152</w>
+      <h>80</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;-
+true</panel_attributes>
+    <additional_attributes>10.0;80.0;10.0;10.0;170.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>392</x>
+      <y>888</y>
+      <w>280</w>
+      <h>32</h>
+    </coordinates>
+    <panel_attributes>halign=left
+throw new ParseException("Unterminated comment.")</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>664</x>
+      <y>256</y>
+      <w>552</w>
+      <h>664</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;-</panel_attributes>
+    <additional_attributes>590.0;10.0;670.0;10.0;670.0;810.0;10.0;810.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>232</x>
+      <y>888</y>
+      <w>88</w>
+      <h>32</h>
+    </coordinates>
+    <panel_attributes>halign=left
+input[inx] == '*'</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>232</x>
+      <y>984</y>
+      <w>104</w>
+      <h>32</h>
+    </coordinates>
+    <panel_attributes>halign=left
+input[inx+1] == '/'</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>256</x>
+      <y>912</y>
+      <w>40</w>
+      <h>88</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;-
+true</panel_attributes>
+    <additional_attributes>10.0;90.0;10.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>312</x>
+      <y>888</y>
+      <w>96</w>
+      <h>32</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;-
+false</panel_attributes>
+    <additional_attributes>100.0;20.0;10.0;20.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>328</x>
+      <y>912</y>
+      <w>184</w>
+      <h>104</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;-
+false</panel_attributes>
+    <additional_attributes>180.0;10.0;180.0;110.0;10.0;110.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>200</x>
+      <y>728</y>
+      <w>48</w>
+      <h>288</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;-
+true
+</panel_attributes>
+    <additional_attributes>10.0;10.0;10.0;340.0;40.0;340.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>176</x>
+      <y>704</y>
+      <w>72</w>
+      <h>32</h>
+    </coordinates>
+    <panel_attributes>halign=left
+inx += 2</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>200</x>
+      <y>248</y>
+      <w>576</w>
+      <h>472</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;-
+</panel_attributes>
+    <additional_attributes>700.0;20.0;10.0;20.0;10.0;570.0</additional_attributes>
   </element>
 </diagram>
