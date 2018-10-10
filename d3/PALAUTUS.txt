@@ -1,0 +1,5 @@
+En kokenut tehtävässä 3 olevan mitään joka olisi ollut erityisen hankalaa. Opin kuitenkin sen avulla konkreettisesti miten kattavuustestit toimii, joten tehtävä oli hyödyllinen.
+
+CalcTest.java tiedostosta löytyy testien kommenteissa löytämäni bugi, sekä sen selitys. Löysin vaan ilmeisen tahallisen virheen jakolaskussa. Kirjasin ylös testiin mistä sen löytää ja miten korjata, sekä myös sen vaikutuksen nollalla jakamiseen.
+
+Kattavuus ei yltänyt sataan prosentiin, niinkuin raportista nähdään. Tämä johtuu siitä etten päässyt kattavuustestillä unexpected() funktioon kiinni, eikä ilmeisesti ole näin mahdollistakaan. Joten Calc.java tiedostosta jäi kolme riviä pois kattavuudesta (47, 68, 81).
