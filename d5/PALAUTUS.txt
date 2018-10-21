@@ -1,0 +1,1 @@
+235 /// 2. replaced return of integer sized value with (x == 0 ? 1 : 0) → SURVIVED

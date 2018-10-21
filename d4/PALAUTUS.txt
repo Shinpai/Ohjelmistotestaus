@@ -1,0 +1,11 @@
+Käytin piirtämiseen UMLET-ohjelmaa, palautus sekä .uxf että .png muodossa. Tehtävä oli oikein hyvä ja opettavainen ja se pakotti itseä miettimään yksityiskohtaisemmin miten metodi toimii ja sitä kautta myös mitä erikoistapauksia sen toiminnassa voisi olla. Hankalaa oli saada piirretty kaavio järkevän ja luettavan näköiseksi, näinkin yksinkertaisesta metodista saa näköjään suht sekavan ohjausvuoverkon aikaiseksi.
+
+Peruslohkokattavuuden testijoukko:
+1. '/*' 
+	Aloitettu kommentti ilman lopetusta. "Erikoistapaus" jolla päästään ParseExceptioniin.
+2. ' /* asd */'
+	Alussa whitespace
+		--> pääsee myös tähän : while (inx < input.length && isWhitespace(input[inx])) inx++;
+	Muuten käy oletetun reitin jossa tarkistetaan '/*' ja '*/', eli käytännössä kaikki tekemäni lohkot.
+	
+Peruslohkokattavuus täyttyy, koska testijoukko käy läpi sekä oletetun reitin, että kaksi erikoistapausta: Kommentin lopetuksen puuttumisen ja alun whitespacen.

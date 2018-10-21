@@ -1,0 +1,289 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>Interpreter.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">while</a> &gt; <a href="index.source.html" class="el_package">fi.jyu.antkaij.whilelang</a> &gt; <span class="el_source">Interpreter.java</span></div><h1>Interpreter.java</h1><pre class="source lang-java linenums">// A sample simple programming language interpreter
+// Copyright © 2017 Antti-Juhani Kaijanaho
+
+//     Licensed under the Apache License, Version 2.0 (the &quot;License&quot;);
+//     you may not use this file except in compliance with the License.
+//     You may obtain a copy of the License at
+
+//         http://www.apache.org/licenses/LICENSE-2.0
+
+//     Unless required by applicable law or agreed to in writing,
+//     software distributed under the License is distributed on an &quot;AS
+//     IS&quot; BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either
+//     express or implied.  See the License for the specific language
+//     governing permissions and limitations under the License.
+
+package fi.jyu.antkaij.whilelang;
+
+import java.io.IOException;
+import java.io.Writer;
+import java.util.HashMap;
+import static java.lang.Character.digit;
+import static java.lang.Character.isDigit;
+import static java.lang.Character.isWhitespace;
+import static java.lang.Character.isUnicodeIdentifierStart;
+import static java.lang.Character.isUnicodeIdentifierPart;
+
+public class Interpreter {
+
+    /** Executes the given statement. */
+    public static void exec(String s, Writer out) throws IOException {
+<span class="fc" id="L31">        Interpreter c = new Interpreter(s, out);</span>
+<span class="fc" id="L32">        c.exec(true);</span>
+<span class="pc bpc" id="L33" title="1 of 2 branches missed.">        if (!c.endOfInput()) c.unexpected(&quot;end of input&quot;);</span>
+<span class="fc" id="L34">        out.flush();</span>
+<span class="fc" id="L35">    }</span>
+
+    /** Executes or skips the remaining statements in the input, up to
+     * an unbalanced curly brace. */
+    private void exec(boolean run) throws IOException {
+<span class="fc bfc" id="L40" title="All 4 branches covered.">        while (!endOfInput() &amp;&amp; peekChar() != '}') {</span>
+<span class="fc" id="L41">            String name = getId();</span>
+            // NOTE: This requires Java 7 or later
+<span class="fc bfc" id="L43" title="All 3 branches covered.">            switch (name) {</span>
+            case &quot;while&quot;:
+<span class="fc" id="L45">                execWhile(run);</span>
+<span class="fc" id="L46">                break;</span>
+            case &quot;print&quot;:
+<span class="fc" id="L48">                execPrint(run);</span>
+<span class="fc" id="L49">                break;</span>
+            default:
+                // assignment
+<span class="fc" id="L52">                getChar('=');</span>
+<span class="fc" id="L53">                int val = eval();</span>
+<span class="fc" id="L54">                getChar(';');</span>
+<span class="fc bfc" id="L55" title="All 2 branches covered.">                if (run) {</span>
+<span class="fc" id="L56">                    vars.put(name, val);</span>
+                }
+            }
+<span class="fc" id="L59">        }</span>
+<span class="fc" id="L60">    }</span>
+
+    /** Executes a while statement (the keyword has already been read). */
+    private void execWhile(boolean run) throws IOException {
+<span class="fc" id="L64">        int start = inx;</span>
+        boolean runLoop;
+        do {
+<span class="fc" id="L67">            inx = start;</span>
+<span class="fc" id="L68">            getChar('(');</span>
+<span class="pc bpc" id="L69" title="1 of 4 branches missed.">            runLoop = eval() != 0 &amp;&amp; run;</span>
+<span class="fc" id="L70">            getChar(')');</span>
+<span class="fc" id="L71">            getChar('{');</span>
+<span class="fc" id="L72">            exec(runLoop);</span>
+<span class="fc" id="L73">            getChar('}');</span>
+<span class="fc bfc" id="L74" title="All 2 branches covered.">        } while (runLoop);</span>
+<span class="fc" id="L75">    }</span>
+
+    /** Executes a print statement (the keyword has already been read). */
+    private void execPrint(boolean run) throws IOException {
+<span class="fc" id="L79">        int val = eval();</span>
+<span class="fc" id="L80">        getChar(';');</span>
+<span class="fc bfc" id="L81" title="All 2 branches covered.">        if (run) out.write(&quot;&quot;+val+&quot;\n&quot;);</span>
+<span class="fc" id="L82">    }</span>
+
+    /** Computes the integer value of the remaining arithmetical or
+     * Boolean expression, up to an (unbalanced) parenthesis or
+     * semicolon. */
+    private int eval() {
+<span class="fc" id="L88">        int a = evalArith();</span>
+<span class="fc" id="L89">        int rv = a;</span>
+<span class="pc bpc" id="L90" title="1 of 6 branches missed.">        while (!endOfInput() &amp;&amp; peekChar() != ')' &amp;&amp; peekChar() != ';') {</span>
+            int b;
+<span class="pc bpc" id="L92" title="1 of 3 branches missed.">            switch (peekChar()) {</span>
+            case '=':
+<span class="fc" id="L94">                getChar();</span>
+<span class="fc" id="L95">                b = evalArith();</span>
+<span class="fc bfc" id="L96" title="All 2 branches covered.">                rv = a == b ? 1 : 0;</span>
+<span class="fc" id="L97">                a = b;</span>
+<span class="fc" id="L98">                break;</span>
+            case '&lt;':
+<span class="fc" id="L100">                getChar();</span>
+<span class="fc" id="L101">                b = evalArith();</span>
+<span class="fc bfc" id="L102" title="All 2 branches covered.">                rv = a &lt; b ? 1 : 0;</span>
+<span class="fc" id="L103">                a = b;</span>
+<span class="fc" id="L104">                break;</span>
+            default:
+<span class="nc" id="L106">                unexpected(&quot;'&lt;', '=', ';', ')', or the end of input&quot;);</span>
+            }
+        }
+<span class="fc" id="L109">        return rv;</span>
+    }
+
+
+    /** Computes the integer value of the remaining arithmetical
+     * expression, up to an (unbalanced) parenthesis, comparison
+     * operator, or semicolon. */
+    private int evalArith() {
+<span class="fc" id="L117">        int a = evalTerm();</span>
+<span class="pc bpc" id="L118" title="1 of 2 branches missed.">        while (!endOfInput() &amp;&amp;</span>
+<span class="fc bfc" id="L119" title="All 2 branches covered.">               peekChar() != ')' &amp;&amp;</span>
+<span class="fc bfc" id="L120" title="All 2 branches covered.">               peekChar() != ';' &amp;&amp;</span>
+<span class="fc bfc" id="L121" title="All 2 branches covered.">               peekChar() != '=' &amp;&amp;</span>
+<span class="fc bfc" id="L122" title="All 2 branches covered.">               peekChar() != '&lt;') {</span>
+<span class="pc bpc" id="L123" title="1 of 3 branches missed.">            switch (peekChar()) {</span>
+            case '+':
+<span class="fc" id="L125">                getChar();</span>
+<span class="fc" id="L126">                a = a + evalTerm();</span>
+<span class="fc" id="L127">                break;</span>
+            case '-':
+<span class="fc" id="L129">                getChar();</span>
+<span class="fc" id="L130">                a = a - evalTerm();</span>
+<span class="fc" id="L131">                break;</span>
+            default:
+<span class="nc" id="L133">                unexpected(&quot;'+', '-', ';', ')', or the end of input&quot;);</span>
+            }
+        }
+<span class="fc" id="L136">        return a;</span>
+    }
+
+    /** Evaluates the integer value of the remaining arithmetical
+        expression, up to (but not including) the next + or - sign,
+        (unbalanced) parenthesis, or semicolon. */
+    private int evalTerm() {
+<span class="fc" id="L143">        int a = evalFactor();</span>
+<span class="pc bpc" id="L144" title="1 of 2 branches missed.">        while (!endOfInput() &amp;&amp;</span>
+<span class="fc bfc" id="L145" title="All 2 branches covered.">               peekChar() != ')' &amp;&amp;</span>
+<span class="fc bfc" id="L146" title="All 2 branches covered.">               peekChar() != ';' &amp;&amp;</span>
+<span class="fc bfc" id="L147" title="All 2 branches covered.">               peekChar() != '+' &amp;&amp;</span>
+<span class="fc bfc" id="L148" title="All 2 branches covered.">               peekChar() != '-' &amp;&amp;</span>
+<span class="fc bfc" id="L149" title="All 2 branches covered.">               peekChar() != '=' &amp;&amp;</span>
+<span class="fc bfc" id="L150" title="All 2 branches covered.">               peekChar() != '&lt;') {</span>
+<span class="fc" id="L151">            char op = getChar();</span>
+<span class="fc" id="L152">            int b = evalFactor();</span>
+<span class="pc bpc" id="L153" title="1 of 3 branches missed.">            switch (op) {</span>
+            case '*':
+<span class="fc" id="L155">                a = a * b;</span>
+<span class="fc" id="L156">                break;</span>
+            case '/':
+<span class="fc" id="L158">                a = a / b;</span>
+<span class="fc" id="L159">                break;</span>
+            default:
+<span class="nc" id="L161">                unexpected(&quot;'*', '/', or the end of input&quot;);</span>
+            }
+<span class="fc" id="L163">        }</span>
+<span class="fc" id="L164">        return a;</span>
+    }
+
+    /** Evaluates the integer value of a single integer constant, of a
+        variable name or of an arithmetical expression in
+        parentheses. */
+    private int evalFactor() {
+<span class="pc bpc" id="L171" title="1 of 2 branches missed.">        if (!endOfInput()) {</span>
+<span class="fc bfc" id="L172" title="All 2 branches covered.">            if (peekChar() == '(') {</span>
+<span class="fc" id="L173">                getChar();</span>
+<span class="fc" id="L174">                int rv = eval();</span>
+<span class="pc bpc" id="L175" title="2 of 4 branches missed.">                if (endOfInput() || getChar() != ')') {</span>
+<span class="nc" id="L176">                    unexpected(&quot;')'&quot;);</span>
+                }
+<span class="fc" id="L178">                return rv;</span>
+            }
+<span class="fc bfc" id="L180" title="All 2 branches covered.">            if (isDigit(peekChar())) {</span>
+<span class="fc" id="L181">                return getInt();</span>
+            }
+<span class="pc bpc" id="L183" title="1 of 2 branches missed.">            if (isUnicodeIdentifierStart(peekChar())) {</span>
+<span class="fc" id="L184">                String name = getId();</span>
+<span class="fc" id="L185">                Integer val = vars.get(name);</span>
+<span class="pc bpc" id="L186" title="1 of 2 branches missed.">                return val != null ? val : 0;</span>
+            }
+        }
+<span class="nc" id="L189">        unexpected(&quot;'(', an identifier, or a digit&quot;);</span>
+<span class="nc" id="L190">        throw new Error(&quot;internal error&quot;); // should be unreachable</span>
+    }
+
+    /** The full input string. */
+    private final char[] input;
+    /** Index to input indicating the next character not yet read. */
+<span class="fc" id="L196">    private int inx = 0;</span>
+    /** Output writer to which print statements write to. */
+    private final Writer out;
+    /** The current values of any variables. */
+<span class="fc" id="L200">    private final HashMap&lt;String,Integer&gt; vars = new HashMap&lt;String,Integer&gt;();</span>
+
+    /** Initializes the interpreter object.
+
+        @param s the input string
+        @param out the output writer
+    */
+<span class="fc" id="L207">    private Interpreter(String s, Writer out) {</span>
+<span class="fc" id="L208">        input = s.toCharArray();</span>
+<span class="fc" id="L209">        this.out = out;</span>
+<span class="fc" id="L210">    }</span>
+
+    /** Determines whether the end of input has been reached. */
+    private boolean endOfInput() {
+<span class="fc" id="L214">        skipWhitespace();</span>
+<span class="fc bfc" id="L215" title="All 2 branches covered.">        return inx &gt;= input.length;</span>
+    }
+
+    /** Returns (but does not mark read) the next input character. */
+    private char peekChar() {
+<span class="fc" id="L220">        skipWhitespace();</span>
+<span class="fc" id="L221">        return input[inx];</span>
+    }
+
+    /** Returns (and marks read) the next input character. */
+    private char getChar() {
+<span class="fc" id="L226">        skipWhitespace();</span>
+<span class="fc" id="L227">        return input[inx++];</span>
+    }
+
+    /** Verifies that the next input character matches the argument
+     * and marks it read. */
+    private char getChar(char c) {
+<span class="fc" id="L233">        skipWhitespace();</span>
+<span class="pc bpc" id="L234" title="2 of 4 branches missed.">        if (inx &gt;= input.length || input[inx] != c) unexpected(&quot;'&quot; + c + &quot;'&quot;);</span>
+<span class="fc" id="L235">        return input[inx++];</span>
+    }
+
+    /** Returns the integer constant that the next input characters comprise,
+        and marks those characters read.
+        If  the next input character does not start an integer constant,
+        the return value is arbitrary.
+    */
+    private int getInt() {
+<span class="fc" id="L244">        skipWhitespace();</span>
+<span class="fc" id="L245">        int rv = 0;</span>
+        do {
+<span class="fc" id="L247">            rv = 10 * rv + digit(input[inx], 10);</span>
+<span class="fc" id="L248">            inx++;</span>
+<span class="pc bpc" id="L249" title="1 of 2 branches missed.">        } while (inx &lt; input.length &amp;&amp;</span>
+<span class="fc bfc" id="L250" title="All 2 branches covered.">                 isDigit(input[inx]));</span>
+<span class="fc" id="L251">        return rv;</span>
+    }
+
+    /** Returns the identifier name that next input characters comprise,
+        and marks those characters read. */
+    private String getId() {
+<span class="fc" id="L257">        skipWhitespace();</span>
+<span class="pc bpc" id="L258" title="2 of 4 branches missed.">        if (inx &gt;= input.length || !isUnicodeIdentifierStart(input[inx])) {</span>
+<span class="nc" id="L259">            unexpected(&quot;an identifier&quot;);</span>
+        }
+<span class="fc" id="L261">        StringBuilder sb = new StringBuilder();</span>
+<span class="pc bpc" id="L262" title="1 of 4 branches missed.">        while (inx &lt; input.length &amp;&amp; isUnicodeIdentifierPart(input[inx])) {</span>
+<span class="fc" id="L263">            sb.append(input[inx]);</span>
+<span class="fc" id="L264">            inx++;</span>
+        }
+<span class="fc" id="L266">        return sb.toString();</span>
+    }
+
+    /** If the next input characters are whitespace, marks them read. */
+    private void skipWhitespace() {
+<span class="fc bfc" id="L271" title="All 4 branches covered.">        while (inx &lt; input.length &amp;&amp; isWhitespace(input[inx])) inx++;</span>
+<span class="fc" id="L272">    }</span>
+
+    /** Throws a ParseException indicating that the next input character
+        is not what was expected
+
+        @param what a string describing the expected next character
+    */
+    private void unexpected(String what) {
+<span class="pc bpc" id="L280" title="1 of 2 branches missed.">        if (endOfInput()) {</span>
+<span class="nc" id="L281">            throw new ParseException(&quot;premature end of input, expected &quot; +</span>
+                                     what);
+        } else {
+<span class="fc" id="L284">            throw new ParseException(&quot;got &quot; + peekChar() + &quot;, expected &quot; +</span>
+                                     what);
+        }
+    }
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.2.201808211720</span></div></body></html>

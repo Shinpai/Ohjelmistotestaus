@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>InterpreterTest.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">while</a> &gt; <a href="index.source.html" class="el_package">fi.jyu.antkaij.whilelang</a> &gt; <span class="el_source">InterpreterTest.java</span></div><h1>InterpreterTest.java</h1><pre class="source lang-java linenums">// A sample simple programming language interpreter
+// Copyright © 2017 Antti-Juhani Kaijanaho
+
+//     Licensed under the Apache License, Version 2.0 (the &quot;License&quot;);
+//     you may not use this file except in compliance with the License.
+//     You may obtain a copy of the License at
+
+//         http://www.apache.org/licenses/LICENSE-2.0
+
+//     Unless required by applicable law or agreed to in writing,
+//     software distributed under the License is distributed on an &quot;AS
+//     IS&quot; BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either
+//     express or implied.  See the License for the specific language
+//     governing permissions and limitations under the License.
+
+package fi.jyu.antkaij.whilelang;
+
+import java.io.IOException;
+import java.io.StringWriter;
+import org.junit.*;
+import static org.junit.Assert.*;
+
+<span class="fc" id="L23">public class InterpreterTest {</span>
+
+    private String run(String s) throws IOException {
+<span class="fc" id="L26">        StringWriter w = new StringWriter();</span>
+<span class="fc" id="L27">        Interpreter.exec(s, w);</span>
+<span class="fc" id="L28">        return w.toString();</span>
+    }
+
+    @Test
+    public void testBasic() throws IOException {
+<span class="fc" id="L33">        assertEquals(&quot;42\n&quot;, run(&quot;print 42;&quot;));</span>
+<span class="fc" id="L34">    }</span>
+
+    @Test
+    public void testAssign() throws IOException {
+<span class="fc" id="L38">        assertEquals(&quot;42\n&quot;, run(&quot;x = 42; print x;&quot;));</span>
+<span class="fc" id="L39">    }</span>
+
+    @Test
+    public void testTrivialWhile() throws IOException {
+<span class="fc" id="L43">        assertEquals(&quot;99\n&quot;, run(&quot;while (1 &lt; 0) {&quot; +</span>
+                                  &quot;  print 42;&quot; +
+                                  &quot;}&quot; +
+                                  &quot;print 99;&quot;));
+<span class="fc" id="L47">    }</span>
+
+    @Test
+    public void testWhile() throws IOException {
+<span class="fc" id="L51">        assertEquals(&quot;120\n&quot;, run(&quot;rv = 1;&quot; +</span>
+                                  &quot;i = 1;&quot; +
+                                  &quot;while (i &lt; 6) {&quot; +
+                                  &quot;  rv = rv * i;&quot; +
+                                  &quot;  i = i + 1;&quot; +
+                                  &quot;}&quot; +
+                                  &quot;print rv;&quot;));
+<span class="fc" id="L58">    }</span>
+
+    @Test(expected = ParseException.class)
+    public void testGarbageAtEnd() throws IOException {
+<span class="nc" id="L62">        run(&quot;i = 1;}&quot;);</span>
+<span class="nc" id="L63">    }</span>
+
+    @Test
+    public void testEq() throws IOException {
+<span class="fc" id="L67">        assertEquals(&quot;1\n&quot;, run(&quot;print 1 = 1;&quot;));</span>
+<span class="fc" id="L68">    }</span>
+
+    @Test
+    public void testNEq() throws IOException {
+<span class="fc" id="L72">        assertEquals(&quot;0\n&quot;, run(&quot;print 1 = 2;&quot;));</span>
+<span class="fc" id="L73">    }</span>
+
+    @Test
+    public void testDiv() throws IOException {
+<span class="fc" id="L77">        assertEquals(&quot;3\n&quot;, run(&quot;print 6 / 2;&quot;));</span>
+<span class="fc" id="L78">    }</span>
+
+    @Test
+    public void testSub() throws IOException {
+<span class="fc" id="L82">        assertEquals(&quot;4\n&quot;, run(&quot;print 6 - 2;&quot;));</span>
+<span class="fc" id="L83">    }</span>
+
+    @Test
+    public void testParen() throws IOException {
+<span class="fc" id="L87">        assertEquals(&quot;20\n&quot;, run(&quot;print (2+3)*4;&quot;));</span>
+<span class="fc" id="L88">    }</span>
+
+    // 235 /// 2. replaced return of integer sized value with (x == 0 ? 1 : 0) → SURVIVED
+    @Test
+    public void testJokutesti() throws IOException {
+<span class="fc" id="L93">        run(&quot;print 0 - 0;&quot;);</span>
+<span class="fc" id="L94">    }</span>
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.2.201808211720</span></div></body></html>
